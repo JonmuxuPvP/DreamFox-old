@@ -16,6 +16,13 @@ public class Dream implements Comparable<Dream> {
         this.creationDate = LocalDateTime.now();
         this.modificationDate = null;
         this.tags = tags;
+        checkTags();
+    }
+
+    private void checkTags() {
+        if (tags.isEmpty()) {
+            tags.add(TagManager.undefined());
+        }
     }
 
     public void addTag(Tag tag) {
