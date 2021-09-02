@@ -64,10 +64,9 @@ public class DreamManager {
             words += dream.getWordCount();
             characters += dream.getCharacterCount();
             totalDreams++;
-            // Hard Coded Tags...
-            if (dream.getTags().contains(new Tag("Lucid"))) {
+            if (dream.getTags().contains(TagManager.lucid())) {
                 lucidDreams++;
-            } else if (dream.getTags().contains(new Tag("Normal"))) {
+            } else if (dream.getTags().contains(TagManager.normal())) {
                 normalDreams++;
             }
         }
