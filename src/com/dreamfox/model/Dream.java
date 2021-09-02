@@ -65,23 +65,11 @@ public class Dream implements Comparable<Dream> {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
     public LocalDateTime getModificationDate() {
         return modificationDate;
     }
 
-    public void setModificationDate(LocalDateTime modificationDate) {
-        this.modificationDate = modificationDate;
-    }
-
     public HashSet<Tag> getTags() {
         return tags;
-    }
-
-    public void setTags(HashSet<Tag> tags) {
-        this.tags = tags;
     }
 }
