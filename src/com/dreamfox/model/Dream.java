@@ -1,6 +1,7 @@
 package com.dreamfox.model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 
 public class Dream implements Comparable<Dream> {
     private String title;
