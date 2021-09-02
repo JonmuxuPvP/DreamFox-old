@@ -44,7 +44,10 @@ public class Dream implements Comparable<Dream> {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (!this.title.equals(title)) {
+            this.title = title;
+            this.modificationDate = LocalDateTime.now();
+        }
     }
 
     public String getContent() {
@@ -52,7 +55,10 @@ public class Dream implements Comparable<Dream> {
     }
 
     public void setContent(String content) {
-        this.content = content;
+        if (!this.content.equals(content)) {
+            this.content = content;
+            this.modificationDate = LocalDateTime.now();
+        }
     }
 
     public LocalDateTime getCreationDate() {
