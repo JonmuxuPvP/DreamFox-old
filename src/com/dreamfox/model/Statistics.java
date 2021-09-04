@@ -2,6 +2,7 @@ package com.dreamfox.model;
 
 public class Statistics {
     private int words, characters, lucidDreams, normalDreams, totalDreams;
+    private boolean isBalanced;
 
     public Statistics(int words, int characters, int lucidDreams, int normalDreams, int totalDreams) {
         this.words = words;
@@ -9,6 +10,7 @@ public class Statistics {
         this.lucidDreams = lucidDreams;
         this.normalDreams = normalDreams;
         this.totalDreams = totalDreams;
+        this.isBalanced = lucidDreams + normalDreams == totalDreams;
     }
 
     public int getWords() {
@@ -33,7 +35,11 @@ public class Statistics {
 
     @Override
     public String toString() {
-        return "[DreamFox Statistics]\nWords: " + words + "\nCharacters: " + characters
+        String result = "[DreamFox Statistics]\nWords: " + words + "\nCharacters: " + characters
                 + "\nLucid: " + lucidDreams + "\nNormal: " + normalDreams + "\nTotal: " + totalDreams + "\n";
+        if (!isBalanced) {
+            result += "[!]";
+        }
+        return result;
     }
 }

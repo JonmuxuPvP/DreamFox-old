@@ -79,7 +79,7 @@ public class DreamManager {
         for (Dream dream : dreams) {
             sb.append(dream).append("\n");
         }
-        sb.append("-----------------------\n").append(getStatistics());
+        sb.append("-----------------------\n").append(getStatistics()).append("\n-----------------------\n");
         return sb.toString();
     }
 }
