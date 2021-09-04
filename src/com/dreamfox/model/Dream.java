@@ -26,6 +26,7 @@ public class Dream implements Comparable<Dream> {
     }
 
     public void addTag(Tag tag) {
+        tags.remove(TagManager.undefined());
         tags.add(tag);
     }
 
