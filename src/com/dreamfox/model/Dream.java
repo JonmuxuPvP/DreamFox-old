@@ -15,7 +15,7 @@ public class Dream implements Comparable<Dream> {
         this.content = content.isBlank() || content.isEmpty() ? "empty" : content;
         this.creationDate = LocalDateTime.now();
         this.modificationDate = null;
-        this.tags = tags;
+        this.tags = tags == null ? new HashSet<>() : tags;
         checkTags();
     }
 
