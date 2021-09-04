@@ -73,4 +73,13 @@ public class DreamManager {
         return new Statistics(words, characters, lucidDreams, normalDreams, totalDreams);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Dream dream : dreams) {
+            sb.append(dream).append("\n");
+        }
+        sb.append("-----------------------\n").append(getStatistics());
+        return sb.toString();
+    }
 }

@@ -79,4 +79,9 @@ public class Dream implements Comparable<Dream> {
     public HashSet<Tag> getTags() {
         return tags;
     }
+
+    @Override
+    public String toString() {
+        return title + " | " + tags;
+    }
 }
