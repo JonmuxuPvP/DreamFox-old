@@ -12,6 +12,10 @@ public class Main {
         //tagTesting1();
         //tagTesting2();
         //addDreams();
+        //addDreams2();
+        //dreamTest1();
+        //deleteDream1();
+        tagTesting3();
     }
 
     /*
@@ -89,6 +93,141 @@ public class Main {
         dream3.addTag(TagManager.lucid());
 
         System.out.println(dm + "\n");
+    }
+
+    /**
+     * Test #4 - Getters for Dreams
+     * A few dreams are generated to be tested with their overloaded getters from
+     * the dream manager
+     */
+    public static void addDreams2() {
+        DreamManager dm = new DreamManager();
+
+        HashSet<Tag> tags1 = new HashSet<Tag>();
+        tags1.add(new Tag("WILD"));
+        tags1.add(new Tag("WBTB"));
+
+        HashSet<Tag> tags2 = new HashSet<Tag>();
+        tags2.add(new Tag("WILD"));
+
+        HashSet<Tag> tags3 = new HashSet<Tag>();
+
+        Dream dream1 = new Dream("Dream #1", "some content", tags1);
+        try {Thread.sleep(100); } catch (Exception e) {}
+
+        Dream dream2 = new Dream("Dream #2", "some random content", tags2);
+        try {Thread.sleep(100); } catch (Exception e) {}
+
+        Dream dream3 = new Dream("Dream #3", "more shit", tags3);
+        try {Thread.sleep(100); } catch (Exception e) {}
+
+        dm.addDream(dream3);
+        dm.addDream(dream2);
+        dm.addDream(dream1);
+
+        System.out.println(dm.getDreams("some"));
+        System.out.println(dm.getDreams("some", tags1));
+        System.out.println(dm.getDreams(tags3));
+
+        System.out.println(dm);
+
+    }
+
+    /**
+     * Test #5 - Modifying a dream's content and title
+     *
+     * Either of them are modified to check that a modified date is instantiated.
+     * Furthermore, setters for both fields will now read "Empty" or "No title" if an empty
+     * String is passed through parameters
+     *
+     */
+    public static void dreamTest1() {
+        Dream dream1 = new Dream("Test", "with some text", null);
+
+        System.out.println("Dream created with no modifications:");
+        System.out.println(dream1.getTitle() + "\n" + dream1.getContent());
+        System.out.println(dream1.getCreationDate() + " - " + dream1.getModificationDate() + "\n");
+
+        dream1.setTitle("L");
+        System.out.println("Title changed:");
+        System.out.println(dream1.getTitle() + "\n" + dream1.getContent());
+        System.out.println(dream1.getCreationDate() + " - " + dream1.getModificationDate() + "\n");
+
+        try {Thread.sleep(100); } catch (Exception e) {}
+
+        dream1.setContent("");
+        System.out.println("Changed content to an empty String:");
+        System.out.println(dream1.getTitle() + "\n" + dream1.getContent());
+        System.out.println(dream1.getCreationDate() + " - " + dream1.getModificationDate() + "\n");
+
+        dream1.setContent("");
+        System.out.println("Changed content to the same empty String\n");
+        System.out.println(dream1.getTitle() + "\n" + dream1.getContent());
+        System.out.println(dream1.getCreationDate() + " - " + dream1.getModificationDate() + "\n");
+
+        dream1.setTitle("");
+        System.out.println("Title changed to be empty");
+        System.out.println(dream1.getTitle() + "\n" + dream1.getContent());
+        System.out.println(dream1.getCreationDate() + " - " + dream1.getModificationDate() + "\n");
+    }
+
+    /**
+     * Test #6 - Deleting dreams from dream manager
+     *
+     * A dream is deleted to test it fully disappears from the Dream Manager.
+     * It was obvious it would, but I had to test it anyway
+     *
+     */
+    public static void deleteDream1() {
+        DreamManager dm = new DreamManager();
+
+        HashSet<Tag> tags1 = new HashSet<Tag>();
+        tags1.add(new Tag("WILD"));
+        tags1.add(new Tag("WBTB"));
+
+        HashSet<Tag> tags2 = new HashSet<Tag>();
+        tags2.add(new Tag("WILD"));
+
+        HashSet<Tag> tags3 = new HashSet<Tag>();
+
+        Dream dream1 = new Dream("Dream #1", "some content", tags1);
+        try {Thread.sleep(100); } catch (Exception e) {}
+
+        Dream dream2 = new Dream("Dream #2", "some random content", tags2);
+        try {Thread.sleep(100); } catch (Exception e) {}
+
+        Dream dream3 = new Dream("Dream #3", "more shit", tags3);
+        try {Thread.sleep(100); } catch (Exception e) {}
+
+        dm.addDream(dream3);
+        dm.addDream(dream2);
+        dm.addDream(dream1);
+
+        System.out.println(dm);
+
+        dm.removeDream(dream3);
+
+        System.out.println(dm);
+    }
+
+    /**
+     * Test #7 - Duplicated Tags and case sensitive tags
+     * Self explanatory duh
+     */
+    public static void tagTesting3() {
+        TagManager tm = new TagManager();
+        Tag tag1 = new Tag("WILD");
+        Tag tag2 = new Tag("wild");
+
+        tm.addCustomTag(tag1);
+        tm.addCustomTag(tag2);
+
+        tm.addCustomTag(tag1);
+
+        System.out.println(tm.getCustomTags());
+
+        tm.removeCustomTag(tag1);
+        System.out.println(tm.getCustomTags());
     }
 
 }
