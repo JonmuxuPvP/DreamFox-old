@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 
 public class Dream implements Comparable<Dream> {
+    private final String NO_TITLE = "No Title";
+    private final String EMPTY = "Empty";
     private String title;
     private String content;
     private LocalDateTime creationDate;
@@ -11,8 +13,8 @@ public class Dream implements Comparable<Dream> {
     private HashSet<Tag> tags;
 
     public Dream(String title, String content, HashSet<Tag> tags) {
-        this.title = title.isBlank() || title.isEmpty() ? "No Title" : title;
-        this.content = content.isBlank() || content.isEmpty() ? "empty" : content;
+        this.title = title.isBlank() || title.isEmpty() ? NO_TITLE : title;
+        this.content = content.isBlank() || content.isEmpty() ? EMPTY : content;
         this.creationDate = LocalDateTime.now();
         this.modificationDate = null;
         this.tags = tags == null ? new HashSet<>() : tags;
@@ -53,7 +55,7 @@ public class Dream implements Comparable<Dream> {
 
     public void setTitle(String title) {
         if (!this.title.equals(title)) {
-            this.title = title;
+            this.title = title.isBlank() || title.isEmpty() ? NO_TITLE : title;
             this.modificationDate = LocalDateTime.now();
         }
     }
@@ -64,7 +66,7 @@ public class Dream implements Comparable<Dream> {
 
     public void setContent(String content) {
         if (!this.content.equals(content)) {
-            this.content = content;
+            this.content = content.isBlank() || content.isEmpty() ? EMPTY : content;
             this.modificationDate = LocalDateTime.now();
         }
     }
