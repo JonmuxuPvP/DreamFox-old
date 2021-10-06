@@ -1,6 +1,7 @@
 package com.dreamfox.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 
 public class Dream implements Comparable<Dream> {
@@ -71,12 +72,12 @@ public class Dream implements Comparable<Dream> {
         }
     }
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
+    public String getCreationDate() {
+        return this.creationDate.format(DateTimeFormatter.ofPattern("dd-MM-yy"));
     }
 
-    public LocalDateTime getModificationDate() {
-        return modificationDate;
+    public String getModificationDate() {
+        return this.modificationDate.format(DateTimeFormatter.ofPattern("dd-MM-yy"));
     }
 
     public HashSet<Tag> getTags() {
