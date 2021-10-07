@@ -14,8 +14,8 @@ public class Dream implements Comparable<Dream> {
     private HashSet<Tag> tags;
 
     public Dream(String title, String content, HashSet<Tag> tags) {
-        this.title = title.isEmpty() ? NO_TITLE : title;
-        this.content = content.isEmpty() ? EMPTY : content;
+        this.title = title.split("\\s+")[0].isEmpty() ? NO_TITLE : title;
+        this.content = content.split("\\s+")[0].isEmpty() ? EMPTY : content;
         this.creationDate = LocalDateTime.now();
         this.modificationDate = null;
         this.tags = tags == null ? new HashSet<>() : tags;
